@@ -1,0 +1,40 @@
+
+; You may customize this and other start-up templates; 
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+MOV BX,0300H
+MOV BP,0400H
+
+LEA SI,ARRAY1
+MOV CL,09H
+MOV CH,00H
+MOV DI,BX
+CLD
+REP MOVSB
+
+LEA SI,ARRAY2
+MOV CL,09H
+MOV CH,00H
+MOV DI,BP
+CLD
+REP MOVSB
+
+
+MOV DI,0500H
+MOV SI,0000H
+MOV CL,09H
+L1: MOV AL,[BX+SI]
+    ADD AL,[BP+SI]
+    MOV [DI],AL
+    INC SI
+    INC DI
+    LOOP L1
+    HLT
+    
+ARRAY1 DB 01,02,03,04,05,06,07,08,09
+ARRAY2 DB 0F0H,0E1H,0D2H,0C3H,0B4H,0A5H,096H,087H,078H
+ret
+
+

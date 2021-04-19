@@ -16,8 +16,10 @@ mov si, offset situation
 next: mov ax, [si]
       out 4, ax
 
-mov cx, 001Eh
-mov dx, 8480h
+;for 5s 4C4B40
+;for 1s 1E8480
+mov cx, 004Ch
+mov dx, 4B40h
 
 mov ah, 86h
 int 15h
@@ -30,12 +32,14 @@ jmp next
 
 situation dw 0000_1000_0110_0001b 
 s1 dw 0000_0011_0000_1100b
-;s2 dw 0000_0110_1001_1010b
 s2 dw 0000_0100_1001_0010b
-;s3 dw 0000_1000_0110_0001b
 s3 dw 0000_0011_0000_1100b
+s4 dw 0000_0100_1001_0010b      
+
+;s2 dw 0000_0110_1001_1010b
+;s3 dw 0000_1000_0110_0001b
 ;s4 dw 0000_0100_1101_0011b
-s4 dw 0000_0100_1001_0010b
+
 sit_end = $
 all_red equ 0000_0010_0100_1001b
 

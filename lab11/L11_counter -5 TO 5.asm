@@ -12,12 +12,7 @@ name "led"
 
 mov ax, 0FFFBh
 x1:
-    out 199, ax  
-    mov cx,0000H
-    delay:
-    INC CX
-    CMP CX,10H
-    JL delay
+    out 199, ax
     inc ax
     CMP AX,6
     JL x1   
